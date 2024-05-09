@@ -57,6 +57,19 @@ Route::post('/register', function (Request $request) {
     return redirect('/users');
 });
 
+Route::get('/register/success', function (Request $request) {
+    // TODO: Make a session here.
+    $username = $request->input('username');
+    $password = $request->input('password');
+
+    return redirect('/users');
+});
+
+Route::get('/register/fail', function (Request $request) {
+    // TODO: Return invalid registration message.
+    return redirect('/');
+});
+
 Route::get('/users', function () {
     $users = DB::select('SELECT * FROM users');
     $usersList = [];
