@@ -18,8 +18,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/login', function () {
-    return redirect('/');
+Route::post('/login', function (Request $request) {
+    $username = $request->input('username');
+    $password = $request->input('password');
+
+    $data = DB::select('SELECT username, password FROM users WHERE username = ?', [$username]);
+
+    if ($data[0]->{'password'} == $password) {
+        // TODO: Make a session here.
+        return redirect('/users');
+    } else {
+        // TODO: Return invalid login message.
+        return redirect('/');
+    }
 });
 
 Route::post('/register', function (Request $request) {
