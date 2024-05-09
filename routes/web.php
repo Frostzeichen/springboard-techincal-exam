@@ -24,3 +24,7 @@ Route::post('/login', function () {
 Route::post('/register', function () {
     return redirect('/');
 });
+
+Route::get('/users', function () {
+    return view('users');
+});
