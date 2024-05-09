@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\DB; // Testing purposes only.
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,5 +26,12 @@ Route::post('/register', function () {
 });
 
 Route::get('/users', function () {
-    return view('users');
+    $users = DB::select('select * from users');
+    $usersList = [];
+ 
+    foreach ($users as $user) {
+        array_push($usersList, $user);
+    }
+
+    return view('users', ['users' => $usersList]);
 });
