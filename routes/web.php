@@ -25,12 +25,23 @@ Route::post('/login', function (Request $request) {
     $data = DB::select('SELECT username, password FROM users WHERE username = ?', [$username]);
 
     if ($data[0]->{'password'} == $password) {
-        // TODO: Make a session here.
-        return redirect('/users');
+        return redirect('/login/success');
     } else {
-        // TODO: Return invalid login message.
-        return redirect('/');
+        return redirect('/login/fail');
     }
+});
+
+Route::get('/login/success', function (Request $request) {
+    // TODO: Make a session here.
+    $username = $request->input('username');
+    $password = $request->input('password');
+
+    return redirect('/users');
+});
+
+Route::get('/login/fail', function (Request $request) {
+    // TODO: Return invalid login message.
+    return redirect('/');
 });
 
 Route::post('/register', function (Request $request) {
