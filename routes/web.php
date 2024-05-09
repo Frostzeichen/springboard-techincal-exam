@@ -79,3 +79,9 @@ Route::get('/users', function (Request $request) {
 
     return view('users', ['username' => $request->session()->get('username'), 'users' => $usersList]);
 });
+
+Route::get('/logout', function (Request $request) {
+    $request->session()->flush();
+
+    return redirect('/');
+});
