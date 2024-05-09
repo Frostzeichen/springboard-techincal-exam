@@ -21,6 +21,8 @@ Route::get('/', function () {
 Route::post('/login', function (Request $request) {
     $username = $request->input('username');
     $password = $request->input('password');
+    $request->session()->put('username', $username);
+    $request->session()->put('password', $password);
 
     $data = DB::select('SELECT username, password FROM users WHERE username = ?', [$username]);
 
@@ -32,10 +34,7 @@ Route::post('/login', function (Request $request) {
 });
 
 Route::get('/login/success', function (Request $request) {
-    // TODO: Make a session here.
-    $username = $request->input('username');
-    $password = $request->input('password');
-
+    // TODO: Do something like metrics stuff or something here.
     return redirect('/users');
 });
 
@@ -70,7 +69,7 @@ Route::get('/register/fail', function (Request $request) {
     return redirect('/');
 });
 
-Route::get('/users', function () {
+Route::get('/users', function (Request $request) {
     $users = DB::select('SELECT * FROM users');
     $usersList = [];
  
@@ -78,5 +77,5 @@ Route::get('/users', function () {
         array_push($usersList, $user);
     }
 
-    return view('users', ['users' => $usersList]);
+    return view('users', ['username' => $request->session()->get('username'), 'users' => $usersList]);
 });
