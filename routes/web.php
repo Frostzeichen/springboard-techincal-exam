@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB; // Testing purposes only.
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,12 +22,21 @@ Route::post('/login', function () {
     return redirect('/');
 });
 
-Route::post('/register', function () {
-    return redirect('/');
+Route::post('/register', function (Request $request) {
+    // TODO: Regex validation for username and password.
+    // Must not contain spaces.
+    // Username must be alphanumeric only.
+    // Password must be at least 7 characters long.
+    $username = $request->input('username');
+    $password = $request->input('password');
+
+    DB::insert('INSERT INTO users (username, password) VALUES (?, ?)', [$username, $password]);
+
+    return redirect('/users');
 });
 
 Route::get('/users', function () {
-    $users = DB::select('select * from users');
+    $users = DB::select('SELECT * FROM users');
     $usersList = [];
  
     foreach ($users as $user) {
