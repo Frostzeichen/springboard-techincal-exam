@@ -4,6 +4,7 @@
         "dev": "vite",
         "build": "vite build"
     },
+    "type": "module",
     "devDependencies": {
         "@headlessui/react": "^1.4.2",
         "@inertiajs/react": "^1.0.0",
