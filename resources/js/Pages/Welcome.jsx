@@ -4,48 +4,113 @@ export default function Welcome({ auth }) {
     return (
         <>
             <Head title="Welcome" />
-            <div className="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+            <h1>Terenz's Springboard Technical Exam</h1>
+            <main>
                 <div>
-                    <h1 className="text-white">Terenz's Springboard Technical Exam</h1>
-                    <p className="text-white">This is a website that lets you login and register.</p>
-                    <p className="text-white">Well, it's just that.</p>
-                    <p className="text-white"><s>At least it's got a documentation page, though.</s></p>
+                    <p>This is a website that lets you login and register.</p>
+                    <p>Well, it's just that.</p>
+                    <p><s>At least it's got a documentation page.</s></p>
+                    <p>No documentation page yet. Sorry!</p>
                 </div>
-                <div className="p-6 text-end">
-                    {auth.user ? (
-                        <Link
-                            href={route('dashboard')}
-                            className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                        >
-                            Dashboard
-                        </Link>
-                    ) : (
-                        <>
-                            <Link
-                                href={route('login')}
-                                className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                            >
-                                Log in
-                            </Link>
-
-                            <Link
-                                href={route('register')}
-                                className="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                            >
-                                Register
-                            </Link>
-                        </>
-                    )}
-                </div>
-            </div>
+                {
+                    auth.user ? "" :
+                        <aside>
+                            <p><a href="/login">Login</a></p>
+                            <p><a href="/register">Register</a></p>
+                        </aside>
+                }
+                <details>
+                    <p>Try resizing the screen!</p>
+                    <ul>
+                        <li>At 1281px and above: PC size</li>
+                        <li>At 1280px and below: tablet size</li>
+                        <li>At 768px and below: mobile size</li>
+                    </ul>
+                </details>
+            </main>
+            <footer>
+                <p><span>Size</span> | Made by Terenz Jomar Dela Cruz &copy; 2024.</p>
+            </footer>
 
             <style>{`
-                .bg-dots-darker {
-                    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(0,0,0,0.07)'/%3E%3C/svg%3E");
+            /* Terenz: Didn't use Tailwind. This is bad, I know. */
+                h1 {
+                    margin-top: 30px;
+                    margin-left: 10px;
+                    font-size: 30px;
                 }
-                @media (prefers-color-scheme: dark) {
-                    .dark\\:bg-dots-lighter {
-                        background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E");
+
+                main {
+                    padding: 10px;
+                    position: absolute;
+                    top: 30%;
+                    left: 30%;
+                }
+
+                main > div {
+                    display: inline-block;
+                    text-align: center;
+                }
+
+                main > aside {
+                    display: inline-block;
+                    text-align: center;
+                }
+
+                main > aside > p > a {
+                    padding-left: 100px;
+                    padding-right: 100px;
+                }
+
+                main > aside > p:hover {
+                    background: #8a9291;
+                }
+
+                main > details > ul > li {
+                    list-style-type: square;
+                    list-style-position: inside;
+                }
+
+                footer {
+                    position: absolute;
+                    bottom: 0px;
+                }
+
+                footer > p > span::before {
+                    content: "PC ";
+                }
+
+                @media only screen and (max-width: 1280px) {
+                    main > div {
+                        display: block;
+                    }
+
+                    main > aside {
+                        display: block;
+                        width: 100%;
+                    }
+
+                    footer > p > span::before {
+                        content: "Tablet ";
+                    }
+                }
+
+                @media only screen and (max-width: 768px) {
+                    h1 {
+                        text-align: center;
+                    }
+
+                    main > div {
+                        display: block;
+                    }
+
+                    main > aside {
+                        display: block;
+                        width: 100%;
+                    }
+
+                    footer > p > span::before {
+                        content: "Mobile ";
                     }
                 }
             `}</style>
