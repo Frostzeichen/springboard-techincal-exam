@@ -1,3 +1,4 @@
+import Footer from '@/Components/Footer';
 import { Link, Head } from '@inertiajs/react';
 
 export default function Welcome({ auth }) {
@@ -30,10 +31,8 @@ export default function Welcome({ auth }) {
                     </ul>
                 </details>
             </main>
-            
-            <footer>
-                <p><span>Size</span> | Made by Terenz Jomar Dela Cruz &copy; 2024.</p>
-            </footer>
+
+            <Footer />
 
             <style>{`
             /* Terenz: Didn't use Tailwind. This is bad, I know. */
@@ -72,15 +71,6 @@ export default function Welcome({ auth }) {
                 main > details > ul > li {
                     list-style-type: square;
                     list-style-position: inside;
-                }
-
-                footer {
-                    position: absolute;
-                    bottom: 0px;
-                }
-
-                footer > p > span::before {
-                    content: "PC ";
                 }
 
                 @media only screen and (max-width: 1280px) {

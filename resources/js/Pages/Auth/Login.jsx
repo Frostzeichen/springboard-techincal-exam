@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Head, useForm } from '@inertiajs/react';
+import Footer from '@/Components/Footer';
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -36,6 +37,8 @@ export default function Login({ status, canResetPassword }) {
                 </form>
                 <p>Already have an account? <a href="/register">Register</a>!</p>
             </main>
+
+            <Footer />
 
             <style>{`
                 h1 {
