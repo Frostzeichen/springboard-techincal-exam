@@ -23,7 +23,7 @@ export default function Login({ status, canResetPassword }) {
 
     return (
         <>
-            <Head title="Log in" />
+            <Head title="Login" />
             
             <h1>Login</h1>
 
