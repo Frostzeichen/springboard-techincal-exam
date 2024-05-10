@@ -1,10 +1,10 @@
-export default function Footer() {
+export default function Footer(position = absolute) {
     return (
         <footer>
             <p><span>Size</span> | Made by Terenz Jomar Dela Cruz &copy; 2024.</p>
             <style>{`
                 footer {
-                    position: absolute;
+                    position: ${position};
                     bottom: 0px;
                 }
 
