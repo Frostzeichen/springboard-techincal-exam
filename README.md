@@ -1,66 +1,46 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Installation instructions
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Prerequisites:
+1. PHP
+	- This application was made using PHP 8.
+	- On Arch-based distributions, you can install PHP 8.3 using `sudo pacman -S php`.
+		- Alternatively, you can install PHP 8.2 using `sudo pacman -S php-legacy`. Be sure to change all `php` bash commands with `php-legacy` in the next steps.
+	- On Ubuntu and Ubuntu-based distributions, you may follow the instructions at https://ubuntu.com/server/docs/how-to-install-and-configure-php for the official installation instructions.
+2. Node
+	- This application requires Node 14 and above. Was made using Node 21.
+	- On Arch-based distributions, you can install Node using `sudo pacman -S nodejs`.
+		- If npm does not come with your installation, use `sudo pacman -S npm`.
+	- On Ubuntu and other Ubuntu-based distributions, use `sudo apt install nodejs`.
+		- If npm does not come with your installation, use `sudo apt install npm`.
+3. MySQL (Option 1)
+	- On Arch-based distributions, you can install MySQL (aka MariaDB) using `sudo pacman -S mariadb`.
+	- On Ubuntu and other Ubuntu-based distributions, use `sudo apt install mysql-server`
+4. Dockerized MySQL (Option 2)
+	- This application was made using a Dockerized version of MySQL.
+	- On Arch-based distributions, you can install Docker using `sudo pacman -Ss docker`.
+	- To download the MySQL image, use `docker pull mysql`. More info at https://hub.docker.com/_/mysql for the official image documentation.
+	- To create a MySQL container, use `docker run --name <your-database-container-name> -e MYSQL_ROOT_PASSWORD=<your-database-root-user-password> -d -p 127.0.0.1:3306:3306 mysql` and be sure to change the name and root password. Your database should now be usable at port `3306`. Change the second `3306` if you want to use a different port.
+5. Database for this application
+	- To connect to MySQL from the terminal, use `mysql -u root -p -h 127.0.0.1`.
+	- You will be prompted a password. Type in your password.
+		- If you do not have a password, remove the `-p` flag from the command.
+	- To create a new MySQL database, type `CREATE DATABASE laravel;`. You may change `laravel` with any other name as long as you change the `.env` variable for the database name later on.
 
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Installation:
+1. Clone this repository. Type `git clone https://github.com/Frostzeichen/springboard-technical-exam.git`
+2. Update packages. Run the following commands (the order doesn't matter).
+	- `npm install` or `npm i`
+	- `composer install` or `composer i`
+3. Make a `.env` file and copy the contents of `.env.example` into it.
+	- Easy way to do it: `cp .env.example .env`.
+4. In the `.env` file, scroll to `DB_CONNECTION=mysql` and add your database credentials.
+	- For the most part, you will only need to update the `DB_PASSWORD`. If you changed anything else while making the database, update those parts here.
+5. Generate an application API key using `php artisan key:generate`.
+6. Migrate the database model using `php artisan migrate`.
+7. Run the development servers.
+	- On a separate console, run `npm run dev` to run the React development server.
+	- On another console, run `php artisan serve` to run the Laravel backend server.
+	- In other words, you will have three systems running on your development environment:
+		- A React development server
+		- A Laravel backend server
+		- A MySQL database
