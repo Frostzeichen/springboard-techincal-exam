@@ -4,13 +4,9 @@ export default function Welcome({ auth }) {
     return (
         <>
             <Head title="Welcome" />
-<<<<<<< HEAD
-
+            
             <h1>Terenz's Springboard Technical Exam</h1>
             
-=======
-            <h1>Terenz's Springboard Technical Exam</h1>
->>>>>>> 743e9c9bd3535511bc9cfb9ae34b63321375dfdc
             <main>
                 <div>
                     <p>This is a website that lets you login and register.</p>
@@ -34,10 +30,7 @@ export default function Welcome({ auth }) {
                     </ul>
                 </details>
             </main>
-<<<<<<< HEAD
-
-=======
->>>>>>> 743e9c9bd3535511bc9cfb9ae34b63321375dfdc
+            
             <footer>
                 <p><span>Size</span> | Made by Terenz Jomar Dela Cruz &copy; 2024.</p>
             </footer>
